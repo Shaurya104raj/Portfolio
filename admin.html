@@ -633,7 +633,13 @@
 
             try {
                 if (!pagesCache[pageName]) {
-                    const response = await fetch(pageName);
+                    let response;
+                    if (window.location.protocol === 'file:') {
+                        response = await fetch(`https://raw.githubusercontent.com/harsharyann/Portfolio-Shaurya/main/${pageName}`);
+                    } else {
+                        response = await fetch(pageName);
+                    }
+                    
                     if (!response.ok) {
                         throw new Error(`Failed to load ${pageName}`);
                     }
