@@ -50,57 +50,8 @@
     <!-- Grid Pattern Background -->
     <div class="absolute inset-0 grid-pattern opacity-30 -z-10"></div>
 
-    <!-- Login Container -->
-    <div id="login-container" class="min-h-screen flex items-center justify-center p-6 transition-all duration-500">
-        <div class="glass-card p-10 rounded-[32px] w-full max-w-md shadow-[0_30px_60px_rgba(0,0,0,0.05)] border border-outline-variant/10">
-            <div class="text-center mb-8">
-                <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <span class="material-symbols-outlined text-primary text-4xl">admin_panel_settings</span>
-                </div>
-                <h1 class="text-2xl font-bold text-on-background">Admin Console</h1>
-                <p class="text-secondary text-sm mt-2">Manage and publish changes to Shaurya's Portfolio</p>
-            </div>
-            
-            <form id="login-form" class="space-y-6">
-                <div>
-                    <label class="block text-xs font-semibold text-secondary uppercase tracking-wider mb-2 ml-1">GitHub Username</label>
-                    <input id="github-user" type="text" value="harsharyann" required class="w-full h-12 px-4 rounded-xl border border-primary/20 bg-white/50 focus:ring-2 focus:ring-primary focus:border-primary transition-all text-sm"/>
-                </div>
-                
-                <div>
-                    <label class="block text-xs font-semibold text-secondary uppercase tracking-wider mb-2 ml-1">GitHub Repository</label>
-                    <input id="github-repo" type="text" value="Portfolio-Shaurya" required class="w-full h-12 px-4 rounded-xl border border-primary/20 bg-white/50 focus:ring-2 focus:ring-primary focus:border-primary transition-all text-sm"/>
-                </div>
-
-                <div>
-                    <div class="flex justify-between items-center mb-2 ml-1">
-                        <label class="block text-xs font-semibold text-secondary uppercase tracking-wider">Personal Access Token</label>
-                        <a href="https://github.com/settings/tokens/new?scopes=repo" target="_blank" class="text-xs text-primary hover:underline flex items-center gap-1">
-                            Generate <span class="material-symbols-outlined text-xs">open_in_new</span>
-                        </a>
-                    </div>
-                    <div class="relative">
-                        <input id="github-token" type="password" placeholder="ghp_..." required class="w-full h-12 pl-4 pr-10 rounded-xl border border-primary/20 bg-white/50 focus:ring-2 focus:ring-primary focus:border-primary transition-all text-sm"/>
-                        <button type="button" onclick="toggleTokenVisibility()" class="absolute right-3 top-1/2 -translate-y-1/2 text-secondary hover:text-primary transition-colors flex items-center">
-                            <span id="visibility-icon" class="material-symbols-outlined text-lg">visibility</span>
-                        </button>
-                    </div>
-                </div>
-
-                <div id="login-error" class="hidden text-xs text-red-600 bg-red-50 p-3 rounded-lg border border-red-200">
-                    Failed to connect. Please verify repository details and PAT scopes (write access needed).
-                </div>
-
-                <button type="submit" class="w-full h-12 bg-primary text-white rounded-full font-semibold shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2">
-                    <span>Connect Repository</span>
-                    <span class="material-symbols-outlined text-lg">arrow_forward</span>
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Main Dashboard Dashboard (Hidden Initially) -->
-    <div id="dashboard-container" class="hidden min-h-screen flex">
+    <!-- Main Dashboard Dashboard (Visible Instantly) -->
+    <div id="dashboard-container" class="min-h-screen flex">
         <!-- Sidebar Navigation -->
         <aside class="w-64 glass-sidebar min-h-screen flex flex-col justify-between p-6 fixed left-0 top-0 z-30">
             <div class="space-y-8">
@@ -140,16 +91,15 @@
                 </nav>
             </div>
 
-            <!-- Footer Details/Logout -->
+            <!-- Footer Details -->
             <div class="space-y-4 pt-6 border-t border-primary/10">
                 <div class="px-2">
-                    <span class="block text-[10px] text-secondary font-bold uppercase tracking-wider">Logged in as</span>
-                    <span id="user-display" class="block text-xs font-semibold text-on-background truncate">harsharyann</span>
+                    <span class="block text-[10px] text-secondary font-bold uppercase tracking-wider">Environment</span>
+                    <span id="env-display" class="block text-xs font-semibold text-green-600 truncate flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                        Checking...
+                    </span>
                 </div>
-                <button onclick="logout()" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-red-600 hover:bg-red-50 transition-all">
-                    <span class="material-symbols-outlined text-lg">logout</span>
-                    <span>Disconnect</span>
-                </button>
             </div>
         </aside>
 
@@ -159,17 +109,17 @@
             <div class="flex justify-between items-center mb-8">
                 <div>
                     <h2 id="current-page-title" class="text-2xl font-bold text-on-background">Editing Home Page</h2>
-                    <p class="text-secondary text-sm mt-1">Make direct edits to index.html and publish live immediately.</p>
+                    <p id="header-desc" class="text-secondary text-sm mt-1">Make edits and save locally or download the updated page.</p>
                 </div>
                 
                 <div class="flex gap-4">
-                    <button onclick="window.open(getCurrentPagePreviewURL(), '_blank')" class="glass-card px-5 py-3 rounded-full text-xs font-semibold hover:bg-white transition-all flex items-center gap-2">
+                    <button onclick="window.open(activePage, '_blank')" class="glass-card px-5 py-3 rounded-full text-xs font-semibold hover:bg-white transition-all flex items-center gap-2">
                         <span class="material-symbols-outlined text-sm">visibility</span>
                         Preview Page
                     </button>
                     <button id="save-btn" onclick="saveAndPublish()" class="bg-primary hover:bg-primary-container text-white px-8 py-3 rounded-full text-xs font-semibold shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2">
-                        <span class="material-symbols-outlined text-sm">publish</span>
-                        Publish Live
+                        <span class="material-symbols-outlined text-sm" id="save-btn-icon">save</span>
+                        <span id="save-btn-text">Save Changes</span>
                     </button>
                 </div>
             </div>
@@ -179,7 +129,7 @@
                 <!-- Loader inside editor -->
                 <div id="editor-loader" class="flex flex-col items-center justify-center h-64">
                     <div class="w-12 h-12 border-4 border-primary/20 border-t-primary rounded-full animate-spin mb-4"></div>
-                    <p class="text-secondary text-sm font-medium">Fetching file contents from GitHub...</p>
+                    <p class="text-secondary text-sm font-medium">Fetching file contents...</p>
                 </div>
 
                 <!-- Dynamic Forms container -->
@@ -571,7 +521,7 @@
             </div>
             
             <div class="space-y-2">
-                <h3 class="text-lg font-bold text-on-background">Publishing Changes...</h3>
+                <h3 class="text-lg font-bold text-on-background">Saving Changes...</h3>
                 <p id="publish-step" class="text-xs text-secondary">Preparing commit modifications</p>
             </div>
 
@@ -590,8 +540,8 @@
             </div>
             
             <div class="space-y-2">
-                <h3 class="text-xl font-bold text-on-background">Successfully Published!</h3>
-                <p class="text-xs text-secondary">Your edits have been committed and are now live on GitHub.</p>
+                <h3 class="text-xl font-bold text-on-background">Successfully Saved!</h3>
+                <p id="success-text" class="text-xs text-secondary">Your edits have been successfully updated.</p>
             </div>
 
             <button onclick="closeSuccessOverlay()" class="w-full h-12 bg-primary text-white rounded-full font-semibold shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all">
@@ -602,12 +552,9 @@
 
     <!-- Core Script Logic -->
     <script>
-        let GITHUB_TOKEN = '';
-        let GITHUB_USER = '';
-        let GITHUB_REPO = '';
-        
+        const isLocalMode = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
         let activePage = 'index.html';
-        let pagesCache = {}; // Cache stores the raw HTML content, DOM references, and fetch SHAs
+        let pagesCache = {}; // Cache stores the raw HTML content
 
         // Page Titles mappings
         const pageTitles = {
@@ -620,92 +567,28 @@
 
         // Window load check
         window.addEventListener('load', () => {
-            // Restore session
-            const savedToken = localStorage.getItem('shaurya_pat');
-            const savedUser = localStorage.getItem('shaurya_user');
-            const savedRepo = localStorage.getItem('shaurya_repo');
-
-            if (savedToken && savedUser && savedRepo) {
-                document.getElementById('github-token').value = savedToken;
-                document.getElementById('github-user').value = savedUser;
-                document.getElementById('github-repo').value = savedRepo;
-                
-                // Auto login
-                GITHUB_TOKEN = savedToken;
-                GITHUB_USER = savedUser;
-                GITHUB_REPO = savedRepo;
-
-                showDashboard();
-            }
-        });
-
-        // Toggle Token Input Visibility
-        function toggleTokenVisibility() {
-            const input = document.getElementById('github-token');
-            const icon = document.getElementById('visibility-icon');
-            if (input.type === 'password') {
-                input.type = 'text';
-                icon.innerText = 'visibility_off';
-            } else {
-                input.type = 'password';
-                icon.innerText = 'visibility';
-            }
-        }
-
-        // Login Submit Handler
-        document.getElementById('login-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
+            const envDisplay = document.getElementById('env-display');
+            const headerDesc = document.getElementById('header-desc');
+            const saveBtnText = document.getElementById('save-btn-text');
+            const saveBtnIcon = document.getElementById('save-btn-icon');
             
-            const token = document.getElementById('github-token').value.trim();
-            const user = document.getElementById('github-user').value.trim();
-            const repo = document.getElementById('github-repo').value.trim();
-            const errDiv = document.getElementById('login-error');
-            const submitBtn = e.target.querySelector('button[type="submit"]');
-
-            errDiv.classList.add('hidden');
-            submitBtn.disabled = true;
-            submitBtn.querySelector('span').innerText = 'Connecting...';
-
-            try {
-                // Test connection by attempting to read index.html
-                const url = `https://api.github.com/repos/${user}/${repo}/contents/index.html`;
-                const response = await fetch(url, {
-                    headers: {
-                        'Authorization': `token ${token}`,
-                        'Accept': 'application/vnd.github.v3+json'
-                    }
-                });
-
-                if (!response.ok) {
-                    throw new Error('Verification failed');
-                }
-
-                // If success, store credentials in localStorage
-                localStorage.setItem('shaurya_pat', token);
-                localStorage.setItem('shaurya_user', user);
-                localStorage.setItem('shaurya_repo', repo);
-
-                GITHUB_TOKEN = token;
-                GITHUB_USER = user;
-                GITHUB_REPO = repo;
-
-                showDashboard();
-            } catch (err) {
-                errDiv.classList.remove('hidden');
-                submitBtn.disabled = false;
-                submitBtn.querySelector('span').innerText = 'Connect Repository';
+            if (isLocalMode) {
+                envDisplay.className = 'block text-xs font-semibold text-green-600 truncate flex items-center gap-1.5';
+                envDisplay.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>Local Server Mode';
+                headerDesc.innerText = 'Make direct edits to local files and save instantly.';
+                saveBtnText.innerText = 'Save to File';
+                saveBtnIcon.innerText = 'save';
+            } else {
+                envDisplay.className = 'block text-xs font-semibold text-blue-600 truncate flex items-center gap-1.5';
+                envDisplay.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>Public Download Mode';
+                headerDesc.innerText = 'Edit your portfolio pages in the browser and download the updated HTML instantly.';
+                saveBtnText.innerText = 'Download HTML';
+                saveBtnIcon.innerText = 'download';
             }
-        });
-
-        // Show Dashboard Screen UI
-        function showDashboard() {
-            document.getElementById('login-container').classList.add('hidden');
-            document.getElementById('dashboard-container').classList.remove('hidden');
-            document.getElementById('user-display').innerText = GITHUB_USER;
             
             // Switch tabs to active page
             switchPage('index.html');
-        }
+        });
 
         // Switch Active Page Tab Editor
         async function switchPage(pageName) {
@@ -737,7 +620,7 @@
             await fetchPageContents(pageName);
         }
 
-        // Fetch Page Contents from GitHub Repository
+        // Fetch Page Contents
         async function fetchPageContents(pageName) {
             const form = document.getElementById('editor-form');
             const loader = document.getElementById('editor-loader');
@@ -749,25 +632,13 @@
             saveBtn.classList.add('opacity-50');
 
             try {
-                // If not in cache, fetch from GitHub
                 if (!pagesCache[pageName]) {
-                    const url = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${pageName}`;
-                    const response = await fetch(url, {
-                        headers: {
-                            'Authorization': `token ${GITHUB_TOKEN}`,
-                            'Accept': 'application/vnd.github.v3+json'
-                        }
-                    });
-
+                    const response = await fetch(pageName);
                     if (!response.ok) {
                         throw new Error(`Failed to load ${pageName}`);
                     }
-
-                    const data = await response.json();
-                    const rawHtml = decodeURIComponent(escape(atob(data.content.replace(/\s/g, ''))));
-                    
+                    const rawHtml = await response.text();
                     pagesCache[pageName] = {
-                        sha: data.sha,
                         raw: rawHtml
                     };
                 }
@@ -786,7 +657,6 @@
                         // Find element inside parsed doc with data-edit-id matching this
                         const el = doc.querySelector(`[data-edit-id="${fieldId}"]`);
                         if (el) {
-                            // Decode html entities or tags inside it
                             input.value = el.innerText.trim();
                         } else {
                             input.value = '';
@@ -800,11 +670,11 @@
                 saveBtn.classList.remove('opacity-50');
             } catch (err) {
                 console.error(err);
-                alert(`Error loading ${pageName}. Please check console logs.`);
+                alert(`Error loading ${pageName}. Ensure you are hosting the folder using a local server.`);
             }
         }
 
-        // Commit modifications back to repository
+        // Save modifications locally or trigger download
         async function saveAndPublish() {
             const overlay = document.getElementById('publish-overlay');
             const stepText = document.getElementById('publish-step');
@@ -815,7 +685,6 @@
             prog.style.width = '25%';
 
             try {
-                // Get page document from cache
                 const cache = pagesCache[activePage];
                 if (!cache || !cache.doc) return;
 
@@ -823,7 +692,7 @@
                 const fieldsDiv = document.getElementById(`fields-${activePage}`);
                 if (!fieldsDiv) return;
 
-                stepText.innerText = 'Applying edits to DOM structure...';
+                stepText.innerText = 'Applying edits to HTML...';
                 prog.style.width = '50%';
 
                 // Read values from form fields and inject into parsed document elements
@@ -836,71 +705,75 @@
                     }
                 });
 
-                stepText.innerText = 'Serializing document content...';
+                stepText.innerText = 'Formatting document output...';
                 prog.style.width = '75%';
 
                 // Serialize updated doc back to raw html
                 const serializer = new XMLSerializer();
                 let updatedHtml = serializer.serializeToString(doc);
 
-                // Fix minor issues from XMLSerializer on HTML5 documents:
                 // Replace XML namespaces if added
-                updatedHtml = updatedHtml.replace(' xmlns="http://www.w3.org/1999/xhtml"', '');
-                // Ensure proper doctype format
+                updatedHtml = updatedHtml.replace(/ xmlns="http:\/\/www.w3.org\/1999\/xhtml"/g, '');
                 if (!updatedHtml.startsWith('<!DOCTYPE html>')) {
                     updatedHtml = '<!DOCTYPE html>\n' + updatedHtml;
                 }
 
-                stepText.innerText = 'Pushing commit to GitHub...';
-                prog.style.width = '90%';
+                if (isLocalMode) {
+                    stepText.innerText = 'Saving changes to local file...';
+                    prog.style.width = '90%';
 
-                // Commit back using GitHub API
-                const url = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${activePage}`;
-                const commitBody = {
-                    message: `CMS Update: Modified ${activePage} via Admin Panel`,
-                    content: btoa(unescape(encodeURIComponent(updatedHtml))),
-                    sha: cache.sha
-                };
+                    // POST to local API backend server
+                    const response = await fetch('/api/save', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            filename: activePage,
+                            html: updatedHtml
+                        })
+                    });
 
-                const response = await fetch(url, {
-                    method: 'PUT',
-                    headers: {
-                        'Authorization': `token ${GITHUB_TOKEN}`,
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/vnd.github.v3+json'
-                    },
-                    body: JSON.stringify(commitBody)
-                });
+                    if (!response.ok) {
+                        throw new Error('Local server failed to write changes to disk.');
+                    }
+                } else {
+                    stepText.innerText = 'Preparing HTML file download...';
+                    prog.style.width = '90%';
 
-                if (!response.ok) {
-                    const errData = await response.json();
-                    throw new Error(errData.message || 'Push failed');
+                    // Download file in browser
+                    const blob = new Blob([updatedHtml], { type: 'text/html;charset=utf-8;' });
+                    const link = document.createElement('a');
+                    link.href = URL.createObjectURL(blob);
+                    link.setAttribute('download', activePage);
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
                 }
 
-                const resData = await response.json();
-                
-                // Update local cache SHA and HTML content
-                pagesCache[activePage].sha = resData.content.sha;
+                // Update local cache HTML content
                 pagesCache[activePage].raw = updatedHtml;
 
                 prog.style.width = '100%';
                 setTimeout(() => {
                     overlay.classList.add('hidden');
+                    
+                    // Customize success explanation
+                    const successText = document.getElementById('success-text');
+                    if (isLocalMode) {
+                        successText.innerText = 'Your edits have been successfully written directly to your local file on your disk!';
+                    } else {
+                        successText.innerText = 'Your updated page has been downloaded! Simply drag and drop this file into your GitHub repository to go live.';
+                    }
+                    
                     showSuccessOverlay();
                 }, 500);
 
             } catch (err) {
                 console.error(err);
                 overlay.classList.add('hidden');
-                alert(`Error publishing changes: ${err.message}. Make sure your token has permissions.`);
+                alert(`Error saving changes: ${err.message}`);
             }
-        }
-
-        // Get Live GitHub Pages / Preview url
-        function getCurrentPagePreviewURL() {
-            // Generates the GitHub Pages url based on repository name
-            // e.g., https://harsharyann.github.io/Portfolio-Shaurya/index.html
-            return `https://${GITHUB_USER}.github.io/${GITHUB_REPO}/${activePage}`;
         }
 
         // Success overlays
@@ -911,24 +784,6 @@
 
         function closeSuccessOverlay() {
             document.getElementById('success-overlay').classList.add('hidden');
-        }
-
-        // Logout
-        function logout() {
-            localStorage.clear();
-            GITHUB_TOKEN = '';
-            GITHUB_USER = '';
-            GITHUB_REPO = '';
-            pagesCache = {};
-            
-            document.getElementById('dashboard-container').classList.add('hidden');
-            document.getElementById('login-container').classList.remove('hidden');
-            document.getElementById('login-form').reset();
-            document.getElementById('login-error').classList.add('hidden');
-            
-            const submitBtn = document.getElementById('login-form').querySelector('button[type="submit"]');
-            submitBtn.disabled = false;
-            submitBtn.querySelector('span').innerText = 'Connect Repository';
         }
     </script>
 </body>
