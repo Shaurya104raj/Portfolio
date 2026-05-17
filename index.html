@@ -114,11 +114,11 @@
 <div class="flex justify-between items-center px-6 py-2 h-16">
 <div class="text-xl font-extrabold tracking-tight text-on-background">Shaurya Raj</div>
 <div class="hidden md:flex gap-8 items-center">
-<a class="text-sm font-semibold text-primary" href="#home">Home</a>
-<a class="text-sm font-semibold text-secondary hover:text-primary transition-colors duration-200" href="#about">About</a>
-<a class="text-sm font-semibold text-secondary hover:text-primary transition-colors duration-200" href="#experience">Experience</a>
-<a class="text-sm font-semibold text-secondary hover:text-primary transition-colors duration-200" href="#projects">Projects</a>
-<a class="text-sm font-semibold text-secondary hover:text-primary transition-colors duration-200" href="#contact">Contact</a>
+<a class="nav-link text-sm font-semibold text-secondary hover:text-primary transition-colors duration-200" href="#home">Home</a>
+<a class="nav-link text-sm font-semibold text-secondary hover:text-primary transition-colors duration-200" href="#about">About</a>
+<a class="nav-link text-sm font-semibold text-secondary hover:text-primary transition-colors duration-200" href="#experience">Experience</a>
+<a class="nav-link text-sm font-semibold text-secondary hover:text-primary transition-colors duration-200" href="#projects">Projects</a>
+<a class="nav-link text-sm font-semibold text-secondary hover:text-primary transition-colors duration-200" href="#contact">Contact</a>
 </div>
 <div class="flex items-center gap-3">
 <a href="#contact" class="hidden sm:inline-flex items-center justify-center bg-primary text-white px-5 py-2 rounded-full text-sm font-bold shadow-md shadow-primary/10 hover:bg-primary-container transition-all active:scale-95">Let's Connect</a>
@@ -607,5 +607,44 @@ Certifications &amp; Courses
 </div>
 </div>
 </footer>
+<!-- ScrollSpy Script -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const sections = document.querySelectorAll('header, section');
+        const navLinks = document.querySelectorAll('nav .nav-link');
+
+        function onScroll() {
+            let currentSectionId = 'home';
+            // Adjust threshold for triggering active state (navbar height + extra offset)
+            const scrollPosition = window.scrollY + 120;
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    if (sectionId) {
+                        currentSectionId = sectionId;
+                    }
+                }
+            });
+
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === `#${currentSectionId}`) {
+                    link.classList.remove('text-secondary');
+                    link.classList.add('text-primary');
+                } else {
+                    link.classList.remove('text-primary');
+                    link.classList.add('text-secondary');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', onScroll);
+        onScroll(); // Initialize on load
+    });
+</script>
 </body>
 </html>
