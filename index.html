@@ -1,19 +1,38 @@
 <!DOCTYPE html>
-
-<html lang="en"><head>
-<title>Shaurya | Creative Developer & Digital Architect</title>
+<html lang="en">
+<head>
+<title>Shaurya Raj | Data Analyst &amp; Business Intelligence Specialist</title>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Playfair+Display:ital,wght@0,600;0,700;1,600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
         .grid-pattern {
-            background-image: radial-gradient(circle, #e3bfb3 1px, transparent 1px);
-            background-size: 40px 40px;
+            background-image: radial-gradient(circle, #ab3600 0.75px, transparent 0.75px);
+            background-size: 36px 36px;
+        }
+        .premium-card {
+            background: #ffffff;
+            border: 1px solid rgba(171, 54, 0, 0.08);
+            box-shadow: 0 10px 30px -10px rgba(171, 54, 0, 0.04);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .premium-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 30px 60px -20px rgba(171, 54, 0, 0.08);
+            border-color: rgba(171, 54, 0, 0.15);
         }
     </style>
 <script id="tailwind-config">
@@ -78,27 +97,11 @@
                     },
                     "spacing": {
                         "gutter": "24px",
-                        "section-padding-desktop": "120px",
+                        "section-padding-desktop": "100px",
                         "margin-mobile": "20px",
                         "unit": "8px",
                         "section-padding-mobile": "64px",
                         "container-max": "1200px"
-                    },
-                    "fontFamily": {
-                        "headline-lg": ["Inter"],
-                        "display": ["Inter"],
-                        "body-lg": ["Inter"],
-                        "body-md": ["Inter"],
-                        "label-md": ["Inter"],
-                        "headline-md": ["Inter"]
-                    },
-                    "fontSize": {
-                        "headline-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                        "display": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}],
-                        "body-lg": ["20px", {"lineHeight": "1.6", "fontWeight": "400"}],
-                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
-                        "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
-                        "headline-md": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}]
                     }
                 }
             }
@@ -107,173 +110,522 @@
 </head>
 <body class="bg-background text-on-background selection:bg-primary-container selection:text-on-primary-container">
 <!-- TopNavBar -->
-<nav class="fixed w-full z-50 bg-background/80 backdrop-blur-md">
+<nav class="fixed w-full z-50 bg-background/80 backdrop-blur-md border-b border-outline-variant/10">
 <div class="flex justify-between items-center max-w-[1200px] mx-auto px-gutter py-unit h-20">
-<div class="font-headline-md text-headline-md font-bold text-on-background">Shaurya</div>
+<div class="text-xl font-extrabold tracking-tight text-on-background">Shaurya <span class="text-primary">Raj</span></div>
 <div class="hidden md:flex gap-8 items-center">
-<a class="font-label-md text-label-md text-primary border-b-2 border-primary pb-1" href="index.html">Home</a>
-<a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors duration-200" href="about.html">About</a>
-<a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors duration-200" href="experience.html">Experience</a>
-<a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors duration-200" href="projects.html">Projects</a>
-<a class="font-label-md text-label-md text-secondary hover:text-primary transition-colors duration-200" href="contact.html">Contact</a>
+<a class="text-sm font-semibold text-primary" href="#home">Home</a>
+<a class="text-sm font-semibold text-secondary hover:text-primary transition-colors duration-200" href="#about">About</a>
+<a class="text-sm font-semibold text-secondary hover:text-primary transition-colors duration-200" href="#experience">Experience</a>
+<a class="text-sm font-semibold text-secondary hover:text-primary transition-colors duration-200" href="#projects">Projects</a>
+<a class="text-sm font-semibold text-secondary hover:text-primary transition-colors duration-200" href="#contact">Contact</a>
 </div>
-<button class="bg-primary-container text-on-primary px-8 py-3 rounded-full font-label-md text-label-md hover:scale-105 transition-transform active:scale-95" onclick="window.location.href=\'contact.html\'">Hire Me</button>
+<div class="flex items-center gap-4">
+<a href="#contact" class="hidden sm:inline-flex items-center justify-center bg-primary text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-md shadow-primary/10 hover:bg-primary-container transition-all active:scale-95">Let's Connect</a>
+<a href="#" class="inline-flex items-center justify-center border border-primary/20 text-primary px-6 py-2.5 rounded-full text-sm font-bold hover:bg-primary/5 transition-all">Resume</a>
+</div>
 </div>
 </nav>
+
 <!-- Hero Section -->
-<header class="relative min-h-screen flex items-center pt-20 overflow-hidden">
-<div class="absolute inset-0 grid-pattern opacity-40 -z-10"></div>
-<div class="max-w-[1200px] mx-auto px-gutter grid grid-cols-12 items-center">
-<div class="col-span-12 md:col-span-10 md:col-start-2 text-center md:text-left">
-<span class="inline-block py-2 px-4 rounded-full bg-primary/10 text-primary font-label-md text-label-md mb-8" data-edit-id="home-hero-badge">AVAILABLE FOR HIRE</span>
-<h1 class="font-display text-display mb-8" data-edit-id="home-hero-title">Data Analyst &amp; BI Expert</h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-12" data-edit-id="home-hero-desc">I transform raw datasets into clean, automated pipelines and high-impact visual stories that drive scalable business growth and smart decision-making.</p>
-<div class="flex flex-col sm:flex-row gap-6 justify-center md:justify-start">
-<button class="bg-primary-container text-on-primary px-10 py-5 rounded-full font-label-md text-label-md shadow-lg shadow-primary-container/20 hover:scale-105 transition-transform" onclick="window.location.href=\'projects.html\'">View Projects</button>
-<button class="bg-transparent border-2 border-outline-variant/30 text-on-background px-10 py-5 rounded-full font-label-md text-label-md hover:bg-surface-variant transition-colors" onclick="window.location.href=\'contact.html\'">Let's Talk</button>
+<header id="home" class="relative min-h-[90vh] flex items-center pt-24 overflow-hidden">
+<div class="absolute inset-0 grid-pattern opacity-10 -z-10"></div>
+<div class="max-w-[1200px] mx-auto px-gutter grid grid-cols-12 items-center w-full">
+<div class="col-span-12 lg:col-span-8 text-center lg:text-left">
+<span class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-6" data-edit-id="home-hero-badge">DATA ANALYST &amp; BI SPECIALIST</span>
+<h1 class="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-on-background mb-8 leading-[1.05]" data-edit-id="home-hero-title">
+    Transforming Raw Data into Actionable <span class="text-primary font-serif italic font-normal">Business Insights</span>
+</h1>
+<p class="text-lg md:text-xl text-secondary max-w-2xl mb-10 leading-relaxed" data-edit-id="home-hero-desc">
+    MBA in Business Analytics with corporate experience building end-to-end automated pipelines, interactive Power BI dashboards, and structured SQL databases that empower executive decision-making.
+</p>
+<div class="flex flex-wrap items-center justify-center lg:justify-start gap-4">
+<button class="bg-primary text-white px-8 py-4 rounded-full text-sm font-bold shadow-lg shadow-primary/20 hover:bg-primary-container transition-all active:scale-95" onclick="document.getElementById('experience').scrollIntoView({behavior: 'smooth'})">View Experience</button>
+<button class="bg-transparent border border-outline/30 text-on-background px-8 py-4 rounded-full text-sm font-bold hover:bg-surface-variant transition-colors" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Contact Me</button>
+<div class="h-8 w-[1px] bg-outline-variant/30 hidden sm:block mx-2"></div>
+<div class="flex gap-3">
+<a href="https://www.linkedin.com/in/shaurya-raj" target="_blank" class="w-11 h-11 rounded-full border border-primary/20 flex items-center justify-center text-secondary hover:text-primary hover:border-primary transition-all">
+<span class="material-symbols-outlined text-xl">link</span>
+</a>
+<a href="https://github.com/Shaurya104raj" target="_blank" class="w-11 h-11 rounded-full border border-primary/20 flex items-center justify-center text-secondary hover:text-primary hover:border-primary transition-all">
+<span class="material-symbols-outlined text-xl">code</span>
+</a>
+</div>
 </div>
 </div>
 </div>
 </header>
-<!-- Services Bento Grid -->
-<section class="py-section-padding-desktop bg-surface">
+
+<!-- Core Technical Competencies -->
+<section class="py-section-padding-desktop bg-surface-container-low border-t border-outline-variant/10">
 <div class="max-w-[1200px] mx-auto px-gutter">
-<div class="mb-20 text-center">
-<h2 class="font-headline-lg text-headline-lg mb-4">Core Services</h2>
-<p class="font-body-md text-body-md text-on-surface-variant">Strategic solutions for modern digital problems.</p>
+<div class="mb-16 text-center max-w-xl mx-auto">
+<span class="text-xs font-bold uppercase tracking-widest text-primary mb-3 block">SKILL SETS</span>
+<h2 class="text-3xl md:text-4xl font-extrabold text-on-background mb-4">Core Technical Competencies</h2>
+<p class="text-secondary text-sm">Strategic analytics proficiencies applied to commercial objectives.</p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<!-- UI/UX Card -> Data Analytics -->
-<div class="group p-10 rounded-[32px] bg-background border border-outline-variant/10 shadow-[30px_30px_60px_rgba(0,0,0,0.04)] hover:scale-[1.02] transition-all duration-300">
-<div class="w-16 h-16 rounded-2xl bg-primary/5 flex items-center justify-center mb-8">
-<span class="material-symbols-outlined text-primary text-4xl" data-icon="analytics">analytics</span>
+<!-- Card 1: Data Analytics -->
+<div class="group p-8 rounded-3xl bg-background border border-outline-variant/10 shadow-sm hover:border-primary/20 transition-all duration-300">
+<div class="w-14 h-14 rounded-2xl bg-primary/5 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="analytics">analytics</span>
 </div>
-<h3 class="font-headline-md text-headline-md mb-4" data-edit-id="home-service-1-title">Data Analytics</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-6" data-edit-id="home-service-1-desc">Cleaning, transforming, and extracting deep insights from complex datasets using Python, SQL, and Excel.</p>
-<ul class="space-y-3">
-<li class="flex items-center gap-3 font-label-md text-label-md text-on-surface">
-<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span> Pandas &amp; NumPy
-                        </li>
-<li class="flex items-center gap-3 font-label-md text-label-md text-on-surface">
-<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span> SQL Relational DBs
-                        </li>
-<li class="flex items-center gap-3 font-label-md text-label-md text-on-surface">
-<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span> Data Mining &amp; Cleaning
-                        </li>
+<h3 class="text-xl font-bold mb-3" data-edit-id="home-service-1-title">Data Analytics &amp; Engineering</h3>
+<p class="text-secondary text-sm leading-relaxed mb-6" data-edit-id="home-service-1-desc">Cleaning, mining, and transformations of complex datasets using Python, SQL, and Excel for structured modeling.</p>
+<ul class="space-y-3 border-t border-outline-variant/10 pt-4">
+<li class="flex items-center gap-2.5 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary text-base" data-icon="check_circle">check_circle</span> Pandas &amp; NumPy
+</li>
+<li class="flex items-center gap-2.5 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary text-base" data-icon="check_circle">check_circle</span> SQL Relational DBs
+</li>
+<li class="flex items-center gap-2.5 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary text-base" data-icon="check_circle">check_circle</span> Data Mining &amp; Profiling
+</li>
 </ul>
 </div>
-<!-- Development Card -> Business Intelligence -->
-<div class="group p-10 rounded-[32px] bg-background border border-outline-variant/10 shadow-[30px_30px_60px_rgba(0,0,0,0.04)] hover:scale-[1.02] transition-all duration-300">
-<div class="w-16 h-16 rounded-2xl bg-primary/5 flex items-center justify-center mb-8">
-<span class="material-symbols-outlined text-primary text-4xl" data-icon="query_stats">query_stats</span>
+<!-- Card 2: Business Intelligence -->
+<div class="group p-8 rounded-3xl bg-background border border-outline-variant/10 shadow-sm hover:border-primary/20 transition-all duration-300">
+<div class="w-14 h-14 rounded-2xl bg-primary/5 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="query_stats">query_stats</span>
 </div>
-<h3 class="font-headline-md text-headline-md mb-4" data-edit-id="home-service-2-title">Business Intelligence</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-6" data-edit-id="home-service-2-desc">Building interactive, high-impact Power BI and Tableau dashboards to track business performance and core KPIs.</p>
-<ul class="space-y-3">
-<li class="flex items-center gap-3 font-label-md text-label-md text-on-surface">
-<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span> Power BI Dashboards
-                        </li>
-<li class="flex items-center gap-3 font-label-md text-label-md text-on-surface">
-<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span> Tableau Visualizations
-                        </li>
-<li class="flex items-center gap-3 font-label-md text-label-md text-on-surface">
-<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span> Executive Reporting
-                        </li>
+<h3 class="text-xl font-bold mb-3" data-edit-id="home-service-2-title">Business Intelligence</h3>
+<p class="text-secondary text-sm leading-relaxed mb-6" data-edit-id="home-service-2-desc">Building live dashboards and interactive reports in Power BI and Tableau for KPI and executive tracking.</p>
+<ul class="space-y-3 border-t border-outline-variant/10 pt-4">
+<li class="flex items-center gap-2.5 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary text-base" data-icon="check_circle">check_circle</span> Power BI &amp; DAX
+</li>
+<li class="flex items-center gap-2.5 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary text-base" data-icon="check_circle">check_circle</span> Tableau Visualizations
+</li>
+<li class="flex items-center gap-2.5 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary text-base" data-icon="check_circle">check_circle</span> Interactive Executive Reports
+</li>
 </ul>
 </div>
-<!-- Strategy Card -> Process Automation -->
-<div class="group p-10 rounded-[32px] bg-background border border-outline-variant/10 shadow-[30px_30px_60px_rgba(0,0,0,0.04)] hover:scale-[1.02] transition-all duration-300">
-<div class="w-16 h-16 rounded-2xl bg-primary/5 flex items-center justify-center mb-8">
-<span class="material-symbols-outlined text-primary text-4xl" data-icon="terminal">terminal</span>
+<!-- Card 3: Process Automation -->
+<div class="group p-8 rounded-3xl bg-background border border-outline-variant/10 shadow-sm hover:border-primary/20 transition-all duration-300">
+<div class="w-14 h-14 rounded-2xl bg-primary/5 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="terminal">terminal</span>
 </div>
-<h3 class="font-headline-md text-headline-md mb-4" data-edit-id="home-service-3-title">Process Automation</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-6" data-edit-id="home-service-3-desc">Automating tedious reporting tasks and workflows using Python scripting and custom Excel VBA macros.</p>
-<ul class="space-y-3">
-<li class="flex items-center gap-3 font-label-md text-label-md text-on-surface">
-<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span> Python API Scripting
-                        </li>
-<li class="flex items-center gap-3 font-label-md text-label-md text-on-surface">
-<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span> VBA &amp; Excel Macros
-                        </li>
-<li class="flex items-center gap-3 font-label-md text-label-md text-on-surface">
-<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span> 50% Time Savings
-                        </li>
+<h3 class="text-xl font-bold mb-3" data-edit-id="home-service-3-title">Workflow Automation</h3>
+<p class="text-secondary text-sm leading-relaxed mb-6" data-edit-id="home-service-3-desc">Automating spreadsheet models and structured extraction tasks using Python scripts and Excel VBA macros.</p>
+<ul class="space-y-3 border-t border-outline-variant/10 pt-4">
+<li class="flex items-center gap-2.5 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary text-base" data-icon="check_circle">check_circle</span> Python Scripting &amp; APIs
+</li>
+<li class="flex items-center gap-2.5 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary text-base" data-icon="check_circle">check_circle</span> VBA &amp; Excel Automations
+</li>
+<li class="flex items-center gap-2.5 text-sm text-on-surface">
+<span class="material-symbols-outlined text-primary text-base" data-icon="check_circle">check_circle</span> Process Optimization
+</li>
 </ul>
 </div>
 </div>
 </div>
 </section>
-<!-- Project Gallery Showcase -->
-<section class="py-section-padding-desktop">
+
+<!-- About & Biography Section -->
+<section id="about" class="py-section-padding-desktop">
 <div class="max-w-[1200px] mx-auto px-gutter">
-<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
-<div class="max-w-xl">
-<h2 class="font-headline-lg text-headline-lg mb-6">Selected Works</h2>
-<p class="font-body-md text-body-md text-on-surface-variant">A collection of projects where design meets functionality to solve real-world problems.</p>
-</div>
-<a class="group flex items-center gap-2 font-label-md text-label-md text-primary" href="#">
-                    EXPLORE ALL PROJECTS 
-                    <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
-</a>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-<!-- Featured Project 1 -->
-<div class="group cursor-pointer" onclick="window.location.href='projects.html'">
-<div class="overflow-hidden rounded-[32px] bg-surface-container mb-8 aspect-video">
-<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Sales Automation & BI Hub Dashboard" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkAkus40F_CvPmoKbcoWRjjZf3KQdm0rGCxoPu6AgJZaloGkNglXYO3H5EdZLtyoD4HCD-uJNDy8sdxA0f7baHHLmhQ0miCltrZEA9leq-PBxQ1TrEA-HsFi3DR8n2d7cBqxnW5JLhpbSRtfEwv9SvPScz5ILJ5ct_b6yNOE6Ydasl-Ffhme2raaPec93E3lfwGZsbuKzP75X-bMk8PzP2Vp2DJo5qCp7Cgpr6Hb767XOnKLuycUB5YfVSBFGb2AT454h72SgYgrOB"/>
-</div>
-<div class="px-4">
-<div class="flex gap-3 mb-4">
-<span class="py-1 px-3 rounded-full bg-primary/5 text-primary font-label-md text-label-md">BI & Automation</span>
-<span class="py-1 px-3 rounded-full bg-primary/5 text-primary font-label-md text-label-md">2025</span>
-</div>
-<h4 class="font-headline-md text-headline-md mb-2 group-hover:text-primary transition-colors" data-edit-id="home-project-1-title">Sales Automation & BI Hub</h4>
-<p class="font-body-md text-body-md text-on-surface-variant" data-edit-id="home-project-1-desc">Designed a real-time Power BI performance hub and SQL database for Scimplify, automating operations and saving 50% manual reporting time.</p>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+<!-- Left: Profile Portrait -->
+<div class="lg:col-span-5">
+<div class="relative group max-w-sm mx-auto">
+<div class="absolute -inset-4 bg-primary-fixed rounded-[2rem] opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
+<img class="relative w-full aspect-[4/5] object-cover rounded-[2rem] shadow-xl grayscale hover:grayscale-0 transition-all duration-700" data-alt="Shaurya Raj portrait" src="1000173795.png"/>
 </div>
 </div>
-<!-- Featured Project 2 -->
-<div class="group cursor-pointer" onclick="window.location.href='projects.html'">
-<div class="overflow-hidden rounded-[32px] bg-surface-container mb-8 aspect-video">
-<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="IPL Forecasting Visualizations" src="https://lh3.googleusercontent.com/aida-public/AB6AXuClVGeoEHeSATFYZbDLfH7jgY_5vkdB2A_QAN76elGDHvQNY3kSPRO-4Pg_k6Rhv0lGb6W8ZSt49G4F_bx02cLuvVyVRtZ0qx9HTg5TZFGzSavbtuJjoxHNN5tvpI9mCxZvUUK4KrHXfozV9_oUB-CyUK9ZGc5HAfv41djvo3i3vye7L61uSokA8KIR9xKXlks1Zz6A5S_PYNcF92VVRbvM5dqRLSozDVeSHsO7BEU_Oiijid4r7UMCVdU-zeJB0FRDAaOdY1m8E55S"/>
+<!-- Right: Content -->
+<div class="lg:col-span-7">
+<span class="inline-block px-4 py-1.5 mb-4 bg-primary/5 text-primary text-xs font-bold rounded-full uppercase tracking-wider">BIOGRAPHY</span>
+<h2 class="text-3xl md:text-4xl font-extrabold mb-6 text-on-background leading-tight" data-edit-id="about-intro-title">
+    Academic Excellence Meets Professional Execution
+</h2>
+<div class="space-y-6 text-secondary text-sm md:text-base leading-relaxed">
+<p data-edit-id="about-intro-desc1">
+    I bridge the gap between complex engineering pipelines and core corporate logistics. Holding an MBA in Business Analytics and Supply Chain from AIMS Institute Bangalore, I specialize in cleaning, structured transformations, and analytical storytelling with complex databases.
+</p>
+<p data-edit-id="about-intro-desc2">
+    From writing custom Python scripts utilizing the Gemini API for unstructured data at Scimplify, to deploying ARIMA forecasting models for sports analysis at Infosys Springboard, I build systems that save operational hours and generate executive clarity.
+</p>
 </div>
-<div class="px-4">
-<div class="flex gap-3 mb-4">
-<span class="py-1 px-3 rounded-full bg-primary/5 text-primary font-label-md text-label-md">Data Science</span>
-<span class="py-1 px-3 rounded-full bg-primary/5 text-primary font-label-md text-label-md">2024</span>
-</div>
-<h4 class="font-headline-md text-headline-md mb-2 group-hover:text-primary transition-colors" data-edit-id="home-project-2-title">Time Series & IPL Forecasting</h4>
-<p class="font-body-md text-body-md text-on-surface-variant" data-edit-id="home-project-2-desc">Conducted time series analysis and built ARIMA/SARIMA forecasting models for team and player KPIs at Infosys.</p>
+<!-- Quote Block -->
+<div class="mt-8 p-6 border-l-4 border-primary bg-surface-container rounded-r-2xl">
+<p class="text-base md:text-lg italic font-medium text-on-surface leading-snug" data-edit-id="about-quote">
+    "I believe in creating highly scalable data products—turning dry databases into clean pipelines and stunning dashboards that tell the precise story."
+</p>
 </div>
 </div>
 </div>
 </div>
 </section>
-<!-- Call to Action -->
-<section class="py-section-padding-desktop">
+
+<!-- Career Principles -->
+<section class="py-section-padding-desktop bg-surface-container-low border-t border-outline-variant/10">
 <div class="max-w-[1200px] mx-auto px-gutter">
-<div class="bg-primary-container rounded-[48px] p-16 md:p-24 text-center text-on-primary">
-<h2 class="font-display text-display mb-8">data-edit-id="home-cta-title" Ready to start your next project?</h2>
-<p class="font-body-lg text-body-lg mb-12 max-w-2xl mx-auto opacity-90">data-edit-id="home-cta-desc" I'm currently accepting new collaborations. Let's build something exceptional together.</p>
-<div class="flex flex-col sm:flex-row gap-6 justify-center">
-<button class="bg-on-primary text-primary-container px-12 py-6 rounded-full font-label-md text-label-md shadow-xl hover:scale-105 transition-transform" onclick="window.location.href=\'contact.html\'">Get in Touch</button>
-<button class="bg-transparent border-2 border-on-primary text-on-primary px-12 py-6 rounded-full font-label-md text-label-md hover:bg-on-primary/10 transition-colors">My Process</button>
+<div class="text-center mb-16 max-w-xl mx-auto">
+<h2 class="text-3xl font-extrabold text-on-background mb-4">Core Professional Values</h2>
+<div class="w-16 h-1 bg-primary mx-auto rounded-full"></div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Principles -->
+<div class="p-6 bg-background rounded-2xl border border-outline-variant/10 hover:border-primary/20 transition-all duration-300">
+<div class="w-12 h-12 rounded-xl bg-primary/5 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="verified">verified</span>
+</div>
+<h3 class="font-bold text-base mb-2" data-edit-id="about-p1-title">Accuracy</h3>
+<p class="text-secondary text-xs leading-relaxed" data-edit-id="about-p1-desc">Rigorous unit testing and schema validation govern every SQL pipeline and Excel model built.</p>
+</div>
+<div class="p-6 bg-background rounded-2xl border border-outline-variant/10 hover:border-primary/20 transition-all duration-300">
+<div class="w-12 h-12 rounded-xl bg-primary/5 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="settings_suggest">settings_suggest</span>
+</div>
+<h3 class="font-bold text-base mb-2" data-edit-id="about-p2-title">Automation</h3>
+<p class="text-secondary text-xs leading-relaxed" data-edit-id="about-p2-desc">Building robust API connections and scripts that optimize operations and eliminate human error.</p>
+</div>
+<div class="p-6 bg-background rounded-2xl border border-outline-variant/10 hover:border-primary/20 transition-all duration-300">
+<div class="w-12 h-12 rounded-xl bg-primary/5 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="dashboard">dashboard</span>
+</div>
+<h3 class="font-bold text-base mb-2" data-edit-id="about-p3-title">Visualization</h3>
+<p class="text-secondary text-xs leading-relaxed" data-edit-id="about-p3-desc">Crafting highly elegant Power BI and Tableau workspaces designed for fast, accurate executive actions.</p>
+</div>
+<div class="p-6 bg-background rounded-2xl border border-outline-variant/10 hover:border-primary/20 transition-all duration-300">
+<div class="w-12 h-12 rounded-xl bg-primary/5 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="auto_stories">auto_stories</span>
+</div>
+<h3 class="font-bold text-base mb-2" data-edit-id="about-p4-title">Storytelling</h3>
+<p class="text-secondary text-xs leading-relaxed" data-edit-id="about-p4-desc">Translating massive database architectures into clean presentations that map directly to KPI improvements.</p>
 </div>
 </div>
 </div>
 </section>
+
+<!-- Experience Section -->
+<section id="experience" class="py-section-padding-desktop">
+<div class="max-w-[1200px] mx-auto px-gutter">
+<div class="mb-16 text-center max-w-xl mx-auto">
+<span class="text-xs font-bold uppercase tracking-widest text-primary mb-3 block">CAREER HISTORY</span>
+<h2 class="text-3xl md:text-4xl font-extrabold text-on-background mb-4" data-edit-id="exp-hero-title">Experience &amp; Milestones</h2>
+<p class="text-secondary text-sm" data-edit-id="exp-hero-desc">Corporate history, strategic execution, and analytical roles.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Left: Timeline -->
+<div class="lg:col-span-7">
+<div class="relative pl-8 border-l border-primary/20">
+<!-- Scimplify Data Analyst -->
+<div class="relative mb-12">
+<div class="absolute -left-[37px] top-1.5 w-4 h-4 rounded-full border-4 border-background bg-primary"></div>
+<div>
+<span class="text-xs font-bold text-primary mb-2 block" data-edit-id="exp-item1-duration">JUNE 2025 — PRESENT</span>
+<h3 class="text-xl font-bold text-on-background" data-edit-id="exp-item1-role">Data Analyst</h3>
+<p class="text-sm font-semibold text-secondary mb-3" data-edit-id="exp-item1-company">Scimplify</p>
+<p class="text-secondary text-sm leading-relaxed" data-edit-id="exp-item1-desc">
+                  Deployed Python extraction pipelines integrated with the Gemini API to systematically parse unstructured web databases. Managed SQL databases for secure reporting and developed live performance dashboards in Power BI and Advanced Excel (VBA), improving operations and saving 50% reporting overhead.
+                </p>
+</div>
+</div>
+<!-- Scimplify Intern -->
+<div class="relative mb-12">
+<div class="absolute -left-[37px] top-1.5 w-4 h-4 rounded-full border-4 border-background bg-primary"></div>
+<div>
+<span class="text-xs font-bold text-primary mb-2 block" data-edit-id="exp-item2-duration">MARCH 2025 — MAY 2025</span>
+<h3 class="text-xl font-bold text-on-background" data-edit-id="exp-item2-role">Data Analyst Intern</h3>
+<p class="text-sm font-semibold text-secondary mb-3" data-edit-id="exp-item2-company">Scimplify</p>
+<p class="text-secondary text-sm leading-relaxed" data-edit-id="exp-item2-desc">
+                  Managed ETL operations, cleaning and structuring raw relational datasets using Python (Pandas, NumPy). Created KPI visualization dashboards in Tableau and optimized SQL select queries for performance tuning.
+                </p>
+</div>
+</div>
+<!-- Infosys Springboard -->
+<div class="relative">
+<div class="absolute -left-[37px] top-1.5 w-4 h-4 rounded-full border-4 border-background bg-primary"></div>
+<div>
+<span class="text-xs font-bold text-primary mb-2 block" data-edit-id="exp-item3-duration">NOV 2024 — JAN 2025</span>
+<h3 class="text-xl font-bold text-on-background" data-edit-id="exp-item3-role">Data Visualization Intern</h3>
+<p class="text-sm font-semibold text-secondary mb-3" data-edit-id="exp-item3-company">Infosys Springboard</p>
+<p class="text-secondary text-sm leading-relaxed" data-edit-id="exp-item3-desc">
+                  Analyzed sports metrics and team metrics trends utilizing Google Colab. Programmed predictive time-series forecasting scripts (ARIMA/SARIMA) and built interactive visual reports in Power BI.
+                </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right: Skills & Tech Stacks -->
+<div class="lg:col-span-5 space-y-12">
+<div class="p-8 rounded-3xl bg-surface-container-low border border-outline-variant/10 shadow-sm">
+<h3 class="text-lg font-bold mb-6 text-on-background">Technical Proficiencies</h3>
+<div class="space-y-6">
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold">
+<span>Power BI &amp; Tableau</span>
+<span class="text-primary">95%</span>
+</div>
+<div class="h-2 w-full bg-background rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 95%;"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold">
+<span>Python (Pandas, NumPy)</span>
+<span class="text-primary">92%</span>
+</div>
+<div class="h-2 w-full bg-background rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 92%;"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold">
+<span>SQL Databases</span>
+<span class="text-primary">90%</span>
+</div>
+<div class="h-2 w-full bg-background rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 90%;"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold">
+<span>Advanced Excel &amp; VBA</span>
+<span class="text-primary">96%</span>
+</div>
+<div class="h-2 w-full bg-background rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 96%;"></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="p-8 rounded-3xl bg-surface-container-low border border-outline-variant/10 shadow-sm">
+<h3 class="text-lg font-bold mb-6 text-on-background">Analytical Tools</h3>
+<div class="flex flex-wrap gap-2.5">
+<span class="bg-background border border-outline-variant/20 px-3.5 py-2 rounded-xl text-xs font-bold text-secondary">Power BI</span>
+<span class="bg-background border border-outline-variant/20 px-3.5 py-2 rounded-xl text-xs font-bold text-secondary">Tableau</span>
+<span class="bg-background border border-outline-variant/20 px-3.5 py-2 rounded-xl text-xs font-bold text-secondary">Excel VBA</span>
+<span class="bg-background border border-outline-variant/20 px-3.5 py-2 rounded-xl text-xs font-bold text-secondary">Python</span>
+<span class="bg-background border border-outline-variant/20 px-3.5 py-2 rounded-xl text-xs font-bold text-secondary">PostgreSQL</span>
+<span class="bg-background border border-outline-variant/20 px-3.5 py-2 rounded-xl text-xs font-bold text-secondary">Pandas</span>
+<span class="bg-background border border-outline-variant/20 px-3.5 py-2 rounded-xl text-xs font-bold text-secondary">Git / GitHub</span>
+<span class="bg-background border border-outline-variant/20 px-3.5 py-2 rounded-xl text-xs font-bold text-secondary">Google Colab</span>
+</div>
+</div>
+
+<div class="p-8 rounded-3xl bg-surface-container-low border border-outline-variant/10 shadow-sm">
+<h3 class="text-lg font-bold mb-6 text-on-background flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">workspace_premium</span>
+Certifications &amp; Courses
+</h3>
+<div class="space-y-4">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-lg mt-0.5">verified_user</span>
+<div>
+<h4 class="text-sm font-bold text-on-background">Microsoft Certified: Power BI Data Analyst Associate</h4>
+<p class="text-xs text-secondary">Microsoft (PL-300 Certification)</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-lg mt-0.5">verified_user</span>
+<div>
+<h4 class="text-sm font-bold text-on-background">Google Data Analytics Professional Certificate</h4>
+<p class="text-xs text-secondary">Google via Coursera Career Academy</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-lg mt-0.5">verified_user</span>
+<div>
+<h4 class="text-sm font-bold text-on-background">Advanced SQL for Data Engineers &amp; BI</h4>
+<p class="text-xs text-secondary">PostgreSQL &amp; Query Optimization Course</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-lg mt-0.5">verified_user</span>
+<div>
+<h4 class="text-sm font-bold text-on-background">Python Data Science &amp; AI Algorithms</h4>
+<p class="text-xs text-secondary">Infosys Springboard Certification</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Selected Projects Grid -->
+<section id="projects" class="py-section-padding-desktop bg-surface-container-low border-t border-outline-variant/10">
+<div class="max-w-[1200px] mx-auto px-gutter">
+<div class="mb-16 text-center max-w-xl mx-auto">
+<span class="text-xs font-bold uppercase tracking-widest text-primary mb-3 block">PORTFOLIO</span>
+<h2 class="text-3xl md:text-4xl font-extrabold text-on-background mb-4" data-edit-id="projects-hero-title">Selected Projects</h2>
+<p class="text-secondary text-sm" data-edit-id="projects-hero-desc">Interactive dashboards and data products proving technical competence.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Project 1 -->
+<div class="premium-card rounded-3xl overflow-hidden flex flex-col">
+<div class="aspect-video bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Sales Performance Dashboard" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkAkus40F_CvPmoKbcoWRjjZf3KQdm0rGCxoPu6AgJZaloGkNglXYO3H5EdZLtyoD4HCD-uJNDy8sdxA0f7baHHLmhQ0miCltrZEA9leq-PBxQ1TrEA-HsFi3DR8n2d7cBqxnW5JLhpbSRtfEwv9SvPScz5ILJ5ct_b6yNOE6Ydasl-Ffhme2raaPec93E3lfwGZsbuKzP75X-bMk8PzP2Vp2DJo5qCp7Cgpr6Hb767XOnKLuycUB5YfVSBFGb2AT454h72SgYgrOB"/>
+</div>
+<div class="p-8 flex-1 flex flex-col justify-between">
+<div>
+<div class="flex gap-2 mb-4">
+<span class="bg-primary/5 border border-primary/20 text-primary text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Business Intelligence</span>
+<span class="bg-secondary-container text-on-secondary-container text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Power BI</span>
+</div>
+<h3 class="text-xl font-bold text-on-background mb-3" data-edit-id="projects-item1-title">Sales Automation &amp; BI Hub</h3>
+<p class="text-secondary text-sm leading-relaxed mb-6" data-edit-id="projects-item1-desc">Designed a live performance tracking hub in Power BI integrated with a relational SQL database for Scimplify, saving 50% operations planning time.</p>
+</div>
+<span class="inline-flex items-center gap-1.5 text-sm font-bold text-primary group cursor-pointer">
+                  Explore Project Details
+                  <span class="material-symbols-outlined text-base group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+</span>
+</div>
+</div>
+<!-- Project 2 -->
+<div class="premium-card rounded-3xl overflow-hidden flex flex-col">
+<div class="aspect-video bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="IPL Cricket Forecasting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuClVGeoEHeSATFYZbDLfH7jgY_5vkdB2A_QAN76elGDHvQNY3kSPRO-4Pg_k6Rhv0lGb6W8ZSt49G4F_bx02cLuvVyVRtZ0qx9HTg5TZFGzSavbtuJjoxHNN5tvpI9mCxZvUUK4KrHXfozV9_oUB-CyUK9ZGc5HAfv41djvo3i3vye7L61uSokA8KIR9xKXlks1Zz6A5S_PYNcF92VVRbvM5dqRLSozDVeSHsO7BEU_Oiijid4r7UMCVdU-zeJB0FRDAaOdY1m8E55S"/>
+</div>
+<div class="p-8 flex-1 flex flex-col justify-between">
+<div>
+<div class="flex gap-2 mb-4">
+<span class="bg-primary/5 border border-primary/20 text-primary text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Predictive Science</span>
+<span class="bg-secondary-container text-on-secondary-container text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">ARIMA Forecasting</span>
+</div>
+<h3 class="text-xl font-bold text-on-background mb-3" data-edit-id="projects-item2-title">IPL Performance Forecasting</h3>
+<p class="text-secondary text-sm leading-relaxed mb-6" data-edit-id="projects-item2-desc">Created ARIMA/SARIMA algorithms in Python to predict future sports team scores and strike rate metrics, visualizing forecasts in Power BI.</p>
+</div>
+<span class="inline-flex items-center gap-1.5 text-sm font-bold text-primary group cursor-pointer">
+                  Explore Project Details
+                  <span class="material-symbols-outlined text-base group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+</span>
+</div>
+</div>
+<!-- Project 3 -->
+<div class="premium-card rounded-3xl overflow-hidden flex flex-col">
+<div class="aspect-video bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Excel Dashboard Layout" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSC-YaN2ioOnnFGWmN4d0wqxLNVh8JCm1vMgdXHKJTcazWjHQ4mlAI90iVzSzPJPjrTIjjjtRxRIru3XpysJP_fxjnBLPGvn5_Gj0WvxBxqt11_TVOkELBMhExhbWDN0VDlO77Y-myVRhjbSsBNEe_wyeBbUeIEEjkwZzDtIUIBiM6oGE_wKqRuQhqmXgxj_Wvt9sNfS7R3URDgKGKqGlvhxJ-Yz7Oyk4Nac-a6FLP8pGcH_r5kOHVdQS7ckmbXNH0lpvJWXNtFY1v"/>
+</div>
+<div class="p-8 flex-1 flex flex-col justify-between">
+<div>
+<div class="flex gap-2 mb-4">
+<span class="bg-primary/5 border border-primary/20 text-primary text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Spreadsheet Analytics</span>
+<span class="bg-secondary-container text-on-secondary-container text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">VBA Macros</span>
+</div>
+<h3 class="text-xl font-bold text-on-background mb-3" data-edit-id="projects-item3-title">Excel Data Storytelling</h3>
+<p class="text-secondary text-sm leading-relaxed mb-6" data-edit-id="projects-item3-desc">Constructed automated inventory models with Pivot Charts, VBA automations, and formatted KPI cards mapping dynamic tracking logs.</p>
+</div>
+<span class="inline-flex items-center gap-1.5 text-sm font-bold text-primary group cursor-pointer">
+                  Explore Project Details
+                  <span class="material-symbols-outlined text-base group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+</span>
+</div>
+</div>
+<!-- Project 4 -->
+<div class="premium-card rounded-3xl overflow-hidden flex flex-col">
+<div class="aspect-video bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Python Gemini Data Pipeline" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCivYn5RAaIQSVrPvrX38it7el7jsLcOvkFOEpqIeGYHoWDG5Y1Am4-wrWoi024DanN7AiFvlzOs5yjaf7B8v9zL2uEEmVsb3Y9p_Pz4XR7IGmwPJwcOgQTnOaz3X1G522Sqq-UJ3TuLJKY8vsxQcnn05osy8apRYpmsKnXzaGQHZYXh6ezbVEDuNww4vGVHgU-GB54VSQYLERpRkVipm0GEl9W7dpjXP1lS-pulL5DX-Vzx0PuD19J_1WNvKyTY8p9jtTzQFrRvvf0"/>
+</div>
+<div class="p-8 flex-1 flex flex-col justify-between">
+<div>
+<div class="flex gap-2 mb-4">
+<span class="bg-primary/5 border border-primary/20 text-primary text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">AI Engineering</span>
+<span class="bg-secondary-container text-on-secondary-container text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Gemini API</span>
+</div>
+<h3 class="text-xl font-bold text-on-background mb-3" data-edit-id="projects-item4-title">Gemini API Data Pipeline</h3>
+<p class="text-secondary text-sm leading-relaxed mb-6" data-edit-id="projects-item4-desc">Coded an automated Python extraction engine that parses messy unstructured scraped websites and exports structured schemas directly to SQL.</p>
+</div>
+<span class="inline-flex items-center gap-1.5 text-sm font-bold text-primary group cursor-pointer">
+                  Explore Project Details
+                  <span class="material-symbols-outlined text-base group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Refined Connect & Contact Card -->
+<section id="contact" class="py-section-padding-desktop bg-surface">
+<div class="max-w-[1200px] mx-auto px-gutter">
+<div class="mb-16 text-center max-w-xl mx-auto">
+<span class="text-xs font-bold uppercase tracking-widest text-primary mb-3 block">CONTACT</span>
+<h2 class="text-3xl md:text-4xl font-extrabold text-on-background mb-4" data-edit-id="contact-hero-title">Start a Conversation</h2>
+<p class="text-secondary text-sm" data-edit-id="contact-hero-desc">Have an open role, strategic analytics project, or dashboard consulting query?</p>
+</div>
+
+<div class="max-w-[700px] mx-auto mb-20">
+<div class="group relative bg-background p-12 rounded-[40px] shadow-sm border border-outline-variant/10 hover:border-primary/20 transition-all duration-500 text-center overflow-hidden">
+<!-- Glow effect -->
+<div class="absolute -inset-40 bg-gradient-to-tr from-primary/5 to-transparent rounded-[40px] blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10"></div>
+<div class="w-20 h-20 rounded-3xl bg-primary/5 flex items-center justify-center mx-auto mb-6">
+<span class="material-symbols-outlined text-primary text-4xl">mail</span>
+</div>
+<h3 class="text-2xl font-bold text-on-background mb-3">Get in Touch</h3>
+<p class="text-secondary text-sm max-w-md mx-auto mb-8">
+              Click below to send a direct email. I am always open to new employment opportunities, strategic BI queries, and collaborations.
+            </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+<a href="mailto:sauray4400@gmail.com" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-primary text-white px-8 py-4 rounded-full text-sm font-bold hover:bg-primary-container transition-all shadow-md shadow-primary/10">
+<span class="material-symbols-outlined text-lg">mail</span>
+                Send Email
+              </a>
+<a href="https://www.linkedin.com/in/shaurya-raj" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-outline/30 text-on-background px-8 py-4 rounded-full text-sm font-bold hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-lg">link</span>
+                LinkedIn Profile
+              </a>
+<a href="https://github.com/Shaurya104raj" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-outline/30 text-on-background px-8 py-4 rounded-full text-sm font-bold hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-lg">code</span>
+                GitHub Repos
+              </a>
+</div>
+</div>
+</div>
+
+<!-- Understated Metadata Grid -->
+<div class="max-w-[900px] mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 p-8 rounded-3xl bg-surface-container-low border border-outline-variant/10">
+<!-- Location -->
+<div class="flex flex-col items-center text-center p-4">
+<div class="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center mb-4 text-primary">
+<span class="material-symbols-outlined text-lg">location_on</span>
+</div>
+<p class="text-xs font-bold text-secondary mb-1">Based in</p>
+<p class="text-sm font-extrabold text-on-surface" data-edit-id="contact-location">Bengaluru, India</p>
+</div>
+<!-- Response -->
+<div class="flex flex-col items-center text-center p-4 border-y md:border-y-0 md:border-x border-outline-variant/20">
+<div class="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center mb-4 text-primary">
+<span class="material-symbols-outlined text-lg">schedule</span>
+</div>
+<p class="text-xs font-bold text-secondary mb-1">Response Time</p>
+<p class="text-sm font-extrabold text-on-surface" data-edit-id="contact-response">Within 24 Hours</p>
+</div>
+<!-- Timezone -->
+<div class="flex flex-col items-center text-center p-4">
+<div class="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center mb-4 text-primary">
+<span class="material-symbols-outlined text-lg">coffee</span>
+</div>
+<p class="text-xs font-bold text-secondary mb-1">Local Time</p>
+<p class="text-sm font-extrabold text-on-surface" data-edit-id="contact-local-time-city">Bengaluru, IN (GMT+5:30)</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
 <!-- Footer -->
 <footer class="bg-surface-container-low border-t border-outline-variant/10">
-<div class="flex flex-col md:flex-row justify-between items-center max-w-[1200px] mx-auto px-gutter py-section-padding-mobile">
-<div class="mb-8 md:mb-0">
-<div class="font-headline-md text-headline-md font-bold text-primary mb-2">Shaurya</div>
-<p class="font-body-md text-body-md text-on-surface-variant" onclick="if(event.detail === 3) window.location.href='admin.html'" style="cursor: pointer;">© 2026 Shaurya. All rights reserved.</p>
+<div class="flex flex-col md:flex-row justify-between items-center max-w-[1200px] mx-auto px-gutter py-12">
+<div class="mb-6 md:mb-0 text-center md:text-left">
+<div class="text-lg font-extrabold text-primary mb-1">Shaurya Raj</div>
+<p class="text-xs text-secondary" onclick="if(event.detail === 3) window.location.href='admin.html'" style="cursor: pointer;">© 2026 Shaurya Raj. All rights reserved.</p>
 </div>
-<div class="flex gap-8">
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors hover:translate-y-[-2px] transition-transform" href="https://www.linkedin.com/in/shaurya-raj" target="_blank">LinkedIn</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors hover:translate-y-[-2px] transition-transform" href="https://github.com/Shaurya104raj" target="_blank">GitHub</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors hover:translate-y-[-2px] transition-transform" href="#">Twitter</a>
-<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors hover:translate-y-[-2px] transition-transform" href="#">Dribbble</a>
+<div class="flex gap-6">
+<a class="text-xs font-bold text-secondary hover:text-primary transition-colors" href="https://www.linkedin.com/in/shaurya-raj" target="_blank">LinkedIn</a>
+<a class="text-xs font-bold text-secondary hover:text-primary transition-colors" href="https://github.com/Shaurya104raj" target="_blank">GitHub</a>
 </div>
 </div>
 </footer>
-</body></html>
+</body>
+</html>
